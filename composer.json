@@ -1,0 +1,26 @@
+{
+    "name": "junaid/course3",
+    "authors": [
+        {
+            "name": "Jaleed khan",
+            "email": "132694164+JaleedKhanofficial@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^12.20"
+    },
+    "autoload": {
+        "psr-4" :{
+            "Core\\" : "Core/",
+            "Http\\" : "Http/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

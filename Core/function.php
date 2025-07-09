@@ -35,4 +35,14 @@ function view($path, $attribute = []){
     require base_path('views/' . $path); // /views/index.php
 }
 
+function redirect($path){
+    header("location: {$path}");
+    exit();
+}
+
+function old($key, $default = null){
+    return Core\Session::get('old')[ $key ] ?? $default;
+}
+
+
 ?>

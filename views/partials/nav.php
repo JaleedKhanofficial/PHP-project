@@ -10,7 +10,9 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/" class="<?= urlIs("/") ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700" aria-current="page">Home</a>
               <a href="/about" class="<?= urlIs('/about.php') ? 'bg-gray-900 text-white' : 'text-gray-300' ?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
+              <?php if ($_SESSION['user'] ?? false) : ?>
               <a href="/notes" class="<?= urlIs('/notes.php') ? 'bg-gray-900 text-white' : 'text-gray-300' ?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Notes</a>
+              <?php endif; ?>
               <a href="/contact" class="<?= urlIs('/contact.php') ? 'bg-gray-900 text-white' : 'text-gray-300' ?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
 
             </div>
@@ -35,11 +37,21 @@
                   <span class="sr-only">Open user menu</span>
                   <img class="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                 </button>
+                
                  <?php else : ?>
                   <a href="/register" class="<?= urlIs('/register.php') ? 'bg-gray-900 text-white' : 'text-gray-300' ?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
                   <a href="/login" class="<?= urlIs('/login.php') ? 'bg-gray-900 text-white' : 'text-gray-300' ?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
                   <?php endif; ?>
               </div>
+
+              <?php if ($_SESSION['user'] ?? false):?>
+              <div class="ml-3">
+               <form method="POST" action="/session">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button class="text-white">Log Out</button>
+
+               </form>
+              <?php endif; ?>
 
               <!--
                 Dropdown menu, show/hide based on menu state.
